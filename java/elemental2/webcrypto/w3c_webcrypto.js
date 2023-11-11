@@ -400,11 +400,11 @@ webCrypto.EcdsaParams = function(){};
 webCrypto.EcdsaParams.prototype.hash;
 
 
-/**
- * @type {string}
- * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-NamedCurve
- */
-webCrypto.NamedCurve;
+// /**
+//  * @typedef {string}
+//  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-NamedCurve
+//  */
+// webCrypto.NamedCurve;
 
 
 /**
