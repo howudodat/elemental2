@@ -31,6 +31,7 @@ build_test(
         ":elemental2-media",
         ":elemental2-webstorage",
         ":elemental2-indexeddb",
+        ":elemental2-webcrypto",
     ],
 )
 

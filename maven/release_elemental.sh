@@ -96,7 +96,7 @@ fi
 
 cd ${bazel_root}
 
-elemental_artifacts="core dom indexeddb media promise svg webgl webstorage webassembly"
+elemental_artifacts="core dom indexeddb media promise svg webgl webstorage webassembly webcrypto"
 
 for artifact in ${elemental_artifacts}; do
   artifact_path=${bazel_root}/bazel-bin/java/elemental2/${artifact}
