@@ -58,13 +58,6 @@ webCrypto.HashAlgorithmIdentifier = function () {};
 
 
 /**
- * @typedef {Uint8Array}
- * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-BigInteger
- */
-var BigInteger;
-
-
-/**
  * @constructor
  * @see http://www.w3.org/TR/webCryptoAPI/#dfn-CryptoKey
  */
@@ -307,7 +300,7 @@ webCrypto.RsaKeyGenParams = function(){};
  */
 webCrypto.RsaKeyGenParams.prototype.modulusLength;
 /**
- * @type {BigInteger}
+ * @type {Uint8Array}
  */
 webCrypto.RsaKeyGenParams.prototype.publicExponent;
 
@@ -335,7 +328,7 @@ webCrypto.RsaKeyAlgorithm = function(){};
  */
 webCrypto.RsaKeyAlgorithm.prototype.modulusLength;
 /**
- * @type {BigInteger}
+ * @type {Uint8Array}
  */
 webCrypto.RsaKeyAlgorithm.prototype.publicExponent;
 
