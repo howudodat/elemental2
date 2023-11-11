@@ -33,39 +33,42 @@ var webCrypto = {};
 
 
 /**
- * @typedef {?{
- *   name: string
- * }}
+ * @record
  * @see http://www.w3.org/TR/WebCryptoAPI/#algorithm-dictionary
  */
-webCrypto.Algorithm;
-
+webCrypto.Algorithm = function() {};
+/**
+ * @type {string}
+ */
+webCrypto.Algorithm.prototype.name;
 
 /**
- * @typedef {string|!webCrypto.Algorithm}
+ * @record
+ * @extends webCrypto.Algorithm
  * @see http://www.w3.org/TR/WebCryptoAPI/#dfn-AlgorithmIdentifier
  */
-webCrypto.AlgorithmIdentifier;
+webCrypto.AlgorithmIdentifier = function () {};
 
 /**
- * @typedef {webCrypto.AlgorithmIdentifier}
+ * @record
+ * @extends webCrypto.AlgorithmIdentifier
  * @see http://www.w3.org/TR/WebCryptoAPI/#dfn-HashAlgorithmIdentifier
  */
-webCrypto.HashAlgorithmIdentifier;
+webCrypto.HashAlgorithmIdentifier = function () {};
 
 
 /**
  * @typedef {Uint8Array}
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-BigInteger
  */
-webCrypto.BigInteger;
+var BigInteger;
 
 
 /**
  * @constructor
  * @see http://www.w3.org/TR/webCryptoAPI/#dfn-CryptoKey
  */
-function CryptoKey() {}
+webCrypto.CryptoKey = function() {}
 
 
 /**
@@ -73,21 +76,21 @@ function CryptoKey() {}
  *    key (for symmetric algorithm), a public or a private key
  *    (for an asymmetric algorithm).
  */
-CryptoKey.prototype.type;
+webCrypto.CryptoKey.prototype.type;
 
 
 /**
  * @type {boolean} Determines whether or not the raw keying material may be
  *     exported by the application.
  */
-CryptoKey.prototype.extractable;
+webCrypto.CryptoKey.prototype.extractable;
 
 
 /**
  * @type {!Object} An opaque object representing a particular cipher the key
  *     has to be used with.
  */
-CryptoKey.prototype.algorithm;
+webCrypto.CryptoKey.prototype.algorithm;
 
 
 /**
@@ -95,47 +98,49 @@ CryptoKey.prototype.algorithm;
  *   usages internal slot, which indicates which cryptographic operations are
  *   permissible to be used with this key.
  */
-CryptoKey.prototype.usages;
+webCrypto.CryptoKey.prototype.usages;
 
 
 /**
  * @constructor
  * @see https://www.w3.org/TR/WebCryptoAPI/#keypair
  */
-function CryptoKeyPair() {}
+webCrypto.CryptoKeyPair = function() {}
 
 
 /**
- * @type {!CryptoKey}
+ * @type {!webCrypto.CryptoKey}
  */
-CryptoKeyPair.prototype.publicKey;
+webCrypto.CryptoKeyPair.prototype.publicKey;
 
 
 /**
- * @type {!CryptoKey}
+ * @type {!webCrypto.CryptoKey}
  */
-CryptoKeyPair.prototype.privateKey;
+webCrypto.CryptoKeyPair.prototype.privateKey;
 
 
 /** Duplicate CryptoKey{Pair} in webCrypto namespace for backwards-compatibility. */
 
 
-/** @typedef {!CryptoKey} */
-webCrypto.CryptoKey;
+// /** @typedef {!CryptoKey} */
+// webCrypto.CryptoKey;
 
 
-/** @typedef {!CryptoKeyPair} */
-webCrypto.CryptoKeyPair;
+// /** @typedef {!CryptoKeyPair} */
+// webCrypto.CryptoKeyPair;
 
 
 /**
- * @typedef {?{
- *   name: string
- * }}
+ * @record
  * @see http://www.w3.org/TR/WebCryptoAPI/#key-algorithm-dictionary-members
  */
-webCrypto.KeyAlgorithm;
-
+//function KeyAlgorithm() {};
+webCrypto.KeyAlgorithm = function(){};
+/**
+ * @type {string}
+ */
+webCrypto.KeyAlgorithm.prototype.name;
 
 /**
  * @constructor
@@ -296,13 +301,13 @@ webCrypto.RsaOtherPrimesInfo.prototype.t;
  * @extends webCrypto.Algorithm
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-RsaKeyGenParams
  */
-webCrypto.RsaKeyGenParams;
+webCrypto.RsaKeyGenParams = function(){};
 /**
  * @type {number}
  */
 webCrypto.RsaKeyGenParams.prototype.modulusLength;
 /**
- * @type {webCrypto.BigInteger}
+ * @type {BigInteger}
  */
 webCrypto.RsaKeyGenParams.prototype.publicExponent;
 
@@ -312,7 +317,7 @@ webCrypto.RsaKeyGenParams.prototype.publicExponent;
  * @extends webCrypto.RsaKeyGenParams
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-RsaHashedKeyGenParams
  */
-webCrypto.RsaHashedKeyGenParams;
+webCrypto.RsaHashedKeyGenParams = function(){};
 /**
  * @type {webCrypto.HashAlgorithmIdentifier}
  */
@@ -324,13 +329,13 @@ webCrypto.RsaHashedKeyGenParams.prototype.hash;
  * @extends webCrypto.KeyAlgorithm
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-RsaKeyAlgorithm
  */
-webCrypto.RsaKeyAlgorithm;
+webCrypto.RsaKeyAlgorithm = function(){};
 /**
  * @type {number}
  */
 webCrypto.RsaKeyAlgorithm.prototype.modulusLength;
 /**
- * @type {webCrypto.BigInteger}
+ * @type {BigInteger}
  */
 webCrypto.RsaKeyAlgorithm.prototype.publicExponent;
 
@@ -340,7 +345,7 @@ webCrypto.RsaKeyAlgorithm.prototype.publicExponent;
  * @extends webCrypto.RsaKeyAlgorithm
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-RsaHashedKeyAlgorithm
  */
-webCrypto.RsaHashedKeyAlgorithm;
+webCrypto.RsaHashedKeyAlgorithm = function(){};
 /**
  * @type {webCrypto.KeyAlgorithm}
  */
@@ -349,10 +354,10 @@ webCrypto.RsaHashedKeyAlgorithm.prototype.hash;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-RsaHashedImportParams
  */
-webCrypto.RsaHashedImportParams;
+webCrypto.RsaHashedImportParams = function(){};
 /**
  * @type {webCrypto.HashAlgorithmIdentifier}
  */
@@ -361,10 +366,10 @@ webCrypto.RsaHashedImportParams.prototype.hash;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-RsaPssParams
  */
-webCrypto.RsaPssParams;
+webCrypto.RsaPssParams = function(){};
 /**
  * @type {number}
  */
@@ -373,10 +378,10 @@ webCrypto.RsaPssParams.prototype.saltLength;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-RsaOaepParams
  */
-webCrypto.RsaOaepParams;
+webCrypto.RsaOaepParams = function(){};
 /**
  * @type {undefined|!BufferSource}
  */
@@ -385,10 +390,10 @@ webCrypto.RsaOaepParams.prototype.label;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-EcdsaParams
  */
-webCrypto.EcdsaParams;
+webCrypto.EcdsaParams = function(){};
 /**
  * @type {!webCrypto.HashAlgorithmIdentifier}
  */
@@ -396,7 +401,7 @@ webCrypto.EcdsaParams.prototype.hash;
 
 
 /**
- * @typedef {string}
+ * @type {string}
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-NamedCurve
  */
 webCrypto.NamedCurve;
@@ -404,12 +409,12 @@ webCrypto.NamedCurve;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-EcKeyGenParams
  */
-webCrypto.EcKeyGenParams;
+webCrypto.EcKeyGenParams = function(){};
 /**
- * @type {!webCrypto.NamedCurve}
+ * @type {string}
  */
 webCrypto.EcKeyGenParams.prototype.namedCurve;
 
@@ -419,31 +424,31 @@ webCrypto.EcKeyGenParams.prototype.namedCurve;
  * @extends webCrypto.KeyAlgorithm
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-EcKeyAlgorithm
  */
-webCrypto.EcKeyAlgorithm;
+webCrypto.EcKeyAlgorithm = function(){};
 /**
- * @type {!webCrypto.NamedCurve}
+ * @type {string}
  */
 webCrypto.EcKeyAlgorithm.prototype.namedCurve;
 
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-EcKeyImportParams
  */
-webCrypto.EcKeyImportParams;
+webCrypto.EcKeyImportParams = function(){};
 /**
- * @type {!webCrypto.NamedCurve}
+ * @type {string}
  */
 webCrypto.EcKeyImportParams.prototype.namedCurve;
 
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-EcKeyDeriveParams
  */
-webCrypto.EcKeyDeriveParams;
+webCrypto.EcKeyDeriveParams = function(){};
 /**
  * @type {!webCrypto.CryptoKey}
  */
@@ -452,10 +457,10 @@ webCrypto.EcKeyDeriveParams.prototype.public;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-AesCtrParams
  */
-webCrypto.AesCtrParams;
+webCrypto.AesCtrParams = function(){};
 /**
  * @type {!BufferSource}
  */
@@ -471,7 +476,7 @@ webCrypto.AesCtrParams.prototype.length;
  * @extends webCrypto.KeyAlgorithm
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-AesKeyAlgorithm
  */
-webCrypto.AesKeyAlgorithm;
+webCrypto.AesKeyAlgorithm = function(){};
 /**
  * @type {number}
  */
@@ -480,10 +485,10 @@ webCrypto.AesKeyAlgorithm.prototype.length;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-AesKeyGenParams
  */
-webCrypto.AesKeyGenParams;
+webCrypto.AesKeyGenParams = function(){};
 /**
  * @type {number}
  */
@@ -492,10 +497,10 @@ webCrypto.AesKeyGenParams.prototype.length;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-AesDerivedKeyParams
  */
-webCrypto.AesDerivedKeyParams;
+webCrypto.AesDerivedKeyParams = function(){};
 /**
  * @type {number}
  */
@@ -504,10 +509,10 @@ webCrypto.AesDerivedKeyParams.prototype.length;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-AesCbcParams
  */
-webCrypto.AesCbcParams;
+webCrypto.AesCbcParams = function(){};
 /**
  * @type {!BufferSource}
  */
@@ -516,10 +521,10 @@ webCrypto.AesCbcParams.prototype.iv;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-AesGcmParams
  */
-webCrypto.AesGcmParams;
+webCrypto.AesGcmParams = function(){};
 /**
  * @type {!BufferSource}
  */
@@ -536,10 +541,10 @@ webCrypto.AesGcmParams.prototype.tagLength;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-HmacImportParams
  */
-webCrypto.HmacImportParams;
+webCrypto.HmacImportParams = function(){};
 /**
  * @type {!webCrypto.HashAlgorithmIdentifier}
  */
@@ -555,7 +560,7 @@ webCrypto.HmacImportParams.prototype.length;
  * @extends webCrypto.KeyAlgorithm
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-HmacKeyAlgorithm
  */
-webCrypto.HmacKeyAlgorithm;
+webCrypto.HmacKeyAlgorithm = function(){};
 /**
  * @type {!webCrypto.KeyAlgorithm}
  */
@@ -568,10 +573,10 @@ webCrypto.HmacKeyAlgorithm.prototype.length;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-HmacKeyGenParams
  */
-webCrypto.HmacKeyGenParams;
+webCrypto.HmacKeyGenParams = function(){};
 /**
  * @type {!webCrypto.HashAlgorithmIdentifier}
  */
@@ -584,10 +589,10 @@ webCrypto.HmacKeyGenParams.prototype.length;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-HkdfParams
  */
-webCrypto.HkdfParams;
+webCrypto.HkdfParams = function(){};
 /**
  * @type {!webCrypto.HashAlgorithmIdentifier}
  */
@@ -604,10 +609,10 @@ webCrypto.HkdfParams.prototype.info;
 
 /**
  * @record
- * @extends webCrypto.Algorithm
+ * @extends webCrypto.AlgorithmIdentifier
  * @see https://www.w3.org/TR/WebCryptoAPI/#dfn-Pbkdf2Params
  */
-webCrypto.Pbkdf2Params;
+webCrypto.Pbkdf2Params = function(){};
 /**
  * @type {!BufferSource}
  */
@@ -807,9 +812,9 @@ webCrypto.Crypto = function() {};
 
 /**
  * @see https://developer.mozilla.org/en/DOM/window.crypto.getRandomValues
- * @param {!Int8Array|!Uint8Array|!Uint8ClampedArray|!Int16Array|!Uint16Array|!Int32Array|!Uint32Array|!BigInt64Array|!BigUint64Array}
+ * @param {!Int8Array|!Uint8Array|!Uint8ClampedArray|!Int16Array|!Uint16Array|!Int32Array|!Uint32Array}
  *     typedArray
- * @return {!Int8Array|!Uint8Array|!Uint8ClampedArray|!Int16Array|!Uint16Array|!Int32Array|!Uint32Array|!BigInt64Array|!BigUint64Array}
+ * @return {!Int8Array|!Uint8Array|!Uint8ClampedArray|!Int16Array|!Uint16Array|!Int32Array|!Uint32Array}
  * @throws {Error}
  */
 webCrypto.Crypto.prototype.getRandomValues = function(typedArray) {};
