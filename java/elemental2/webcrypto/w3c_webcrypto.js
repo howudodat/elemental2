@@ -652,7 +652,7 @@ webCrypto.SubtleCrypto.prototype.decrypt = function(algorithm, key,
 
 
 /**
- * @param {!webCrypto.AlgorithmIdentifier} algorithm Supported
+ * @param {!webCrypto.AlgorithmIdentifier|String} algorithm Supported
  *     values are: HMAC, RSASSA-PKCS1-v1_5, and ECDSA.
  * @param {!webCrypto.CryptoKey} key Private key to be used for signing.
  * @param {!BufferSource} data Data to be signed.
@@ -663,7 +663,7 @@ webCrypto.SubtleCrypto.prototype.sign = function(algorithm, key,
 
 
 /**
- * @param {!webCrypto.AlgorithmIdentifier} algorithm Supported
+ * @param {!webCrypto.AlgorithmIdentifier|String} algorithm Supported
  *     values are: HMAC, RSASSA-PKCS1-v1_5, and ECDSA.
  * @param {!webCrypto.CryptoKey} key Private key to be used for signing.
  * @param {!BufferSource} signature Signature to verify.
@@ -676,7 +676,7 @@ webCrypto.SubtleCrypto.prototype.verify = function(algorithm, key,
 
 
 /**
- * @param {!webCrypto.AlgorithmIdentifier} algorithm Supported
+ * @param {!webCrypto.AlgorithmIdentifier|String} algorithm Supported
  *     values are: SHA-1, SHA-256, SHA-384, and SHA-512.
  * @param {!BufferSource} data Data to be hashed using the hashing algorithm.
  * @return {!Promise<!ArrayBuffer>} returns the hash on success.
@@ -734,7 +734,7 @@ webCrypto.SubtleCrypto.prototype.deriveBits = function(algorithm,
  *     format of the key to imported.
  * @param {!BufferSource|!webCrypto.JsonWebKey} keyData The key
  *     in the given format.
- * @param {!webCrypto.AlgorithmIdentifier|webCrypto.RsaHashedImportParams}
+ * @param {!webCrypto.AlgorithmIdentifier|webCrypto.RsaHashedImportParams|String}
  *     algorithm Supported values are: AES-CTR, AES-CBC, AES-GCM, RSA-OAEP,
  *     AES-KW, HMAC, RSASSA-PKCS1-v1_5, ECDSA, ECDH, DH.
  * @param {boolean} extractable If the key can be extracted from the CryptoKey
@@ -764,7 +764,7 @@ webCrypto.SubtleCrypto.prototype.exportKey = function(format, key) {};
  * @param {!webCrypto.CryptoKey} key CryptoKey to wrap.
  * @param {!webCrypto.CryptoKey} wrappingKey CryptoKey used to perform
  *     the wrapping.
- * @param {!webCrypto.AlgorithmIdentifier} wrapAlgorithm algorithm used
+ * @param {!webCrypto.AlgorithmIdentifier|String} wrapAlgorithm algorithm used
  *     to perform the wrapping. It is one of the following: AES-CBC, AES-CTR,
  *     AES-GCM, RSA-OAEP, and AES-KW.
  * @return {!Promise<!ArrayBuffer>} returns the wrapped key in the requested
@@ -781,10 +781,10 @@ webCrypto.SubtleCrypto.prototype.wrapKey = function(format,
  *     format.
  * @param {!webCrypto.CryptoKey} unwrappingKey CryptoKey used to perform
  *     the unwrapping.
- * @param {!webCrypto.AlgorithmIdentifier} unwrapAlgorithm Algorithm
+ * @param {!webCrypto.AlgorithmIdentifier|String} unwrapAlgorithm Algorithm
  *    used to perform the unwrapping. It is one of the following: AES-CBC,
  *    AES-CTR, AES-GCM, RSA-OAEP, and AES-KW.
- * @param {!webCrypto.AlgorithmIdentifier} unwrappedKeyAlgorithm
+ * @param {!webCrypto.AlgorithmIdentifier|String} unwrappedKeyAlgorithm
  *     Represents the algorithm of the wrapped key.
  * @param {boolean} extractable Indicates if the key can be extracted from the
  *     CryptoKey object at a later stage.
